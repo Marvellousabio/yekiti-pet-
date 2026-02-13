@@ -1,0 +1,8 @@
+{
+  "name": "Yetkus Pet Store",
+  "description": "A premium eCommerce platform for pets, supplies, and outdoor hiking gear, featuring AI-powered pet care advice and a seamless mobile-first shopping experience.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
