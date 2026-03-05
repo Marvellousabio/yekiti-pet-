@@ -1,7 +1,9 @@
-
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
+
+// Hide loading spinner when React mounts
+document.body.classList.add('loaded');
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {

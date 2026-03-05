@@ -54,7 +54,47 @@ const App: React.FC = () => {
   return (
     <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart, totalItems }}>
       <HashRouter>
-        <div className="flex flex-col min-h-screen">
+        <AppContent 
+          isMenuOpen={isMenuOpen} 
+          setIsMenuOpen={setIsMenuOpen}
+          isCartOpen={isCartOpen}
+          setIsCartOpen={setIsCartOpen}
+          totalItems={totalItems}
+          totalPrice={totalPrice}
+          cart={cart}
+          removeFromCart={removeFromCart}
+        />
+      </HashRouter>
+    </CartContext.Provider>
+  );
+};
+
+// Inner component that uses useLocation (must be inside Router)
+interface AppContentProps {
+  isMenuOpen: boolean;
+  setIsMenuOpen: (open: boolean) => void;
+  isCartOpen: boolean;
+  setIsCartOpen: (open: boolean) => void;
+  totalItems: number;
+  totalPrice: number;
+  cart: CartItem[];
+  removeFromCart: (id: string) => void;
+}
+
+const AppContent: React.FC<AppContentProps> = ({ 
+  isMenuOpen, 
+  setIsMenuOpen, 
+  isCartOpen, 
+  setIsCartOpen,
+  totalItems,
+  totalPrice,
+  cart,
+  removeFromCart
+}) => {
+  const location = useLocation();
+
+  return (
+    <div className="flex flex-col min-h-screen">
           {/* Top Banner */}
           <div className="bg-orange-500 text-white text-center py-2 text-sm font-medium">
             🔥 First-time buyer? Use code <b>HELLOPET</b> for 15% off your first supply order!
@@ -73,14 +113,14 @@ const App: React.FC = () => {
 
               {/* Desktop Nav */}
               <nav className="hidden lg:flex items-center space-x-8">
-                <Link to="/" className="hover:text-orange-500 font-medium transition-colors text-gray-700">Home</Link>
-                <Link to="/shop-pets" className="hover:text-orange-500 font-medium transition-colors text-gray-700">Shop Pets</Link>
-                <Link to="/supplies" className="hover:text-orange-500 font-medium transition-colors text-gray-700">Supplies</Link>
-                <Link to="/hiking" className="hover:text-green-600 font-medium transition-colors text-green-700">Adventure Gear</Link>
-                <Link to="/care" className="hover:text-orange-500 font-medium transition-colors text-gray-700">Pet Care</Link>
-                <Link to="/reviews" className="hover:text-orange-500 font-medium transition-colors text-gray-700">Reviews</Link>
-                <Link to="/about" className="hover:text-orange-500 font-medium transition-colors text-gray-700">About</Link>
-                <Link to="/contact" className="hover:text-orange-500 font-medium transition-colors text-gray-700">Contact</Link>
+                <Link to="/" className={`font-medium transition-colors ${location.pathname === '/' ? 'text-orange-500' : 'text-gray-700 hover:text-orange-500'}`}>Home</Link>
+                <Link to="/shop-pets" className={`font-medium transition-colors ${location.pathname === '/shop-pets' ? 'text-orange-500' : 'text-gray-700 hover:text-orange-500'}`}>Shop Pets</Link>
+                <Link to="/supplies" className={`font-medium transition-colors ${location.pathname === '/supplies' ? 'text-orange-500' : 'text-gray-700 hover:text-orange-500'}`}>Supplies</Link>
+                <Link to="/hiking" className={`font-medium transition-colors ${location.pathname === '/hiking' ? 'text-green-600' : 'text-green-700 hover:text-green-600'}`}>Adventure Gear</Link>
+                <Link to="/care" className={`font-medium transition-colors ${location.pathname === '/care' ? 'text-orange-500' : 'text-gray-700 hover:text-orange-500'}`}>Pet Care</Link>
+                <Link to="/reviews" className={`font-medium transition-colors ${location.pathname === '/reviews' ? 'text-orange-500' : 'text-gray-700 hover:text-orange-500'}`}>Reviews</Link>
+                <Link to="/about" className={`font-medium transition-colors ${location.pathname === '/about' ? 'text-orange-500' : 'text-gray-700 hover:text-orange-500'}`}>About</Link>
+                <Link to="/contact" className={`font-medium transition-colors ${location.pathname === '/contact' ? 'text-orange-500' : 'text-gray-700 hover:text-orange-500'}`}>Contact</Link>
               </nav>
 
               {/* Actions */}
@@ -109,14 +149,14 @@ const App: React.FC = () => {
             {isMenuOpen && (
               <div className="lg:hidden bg-white border-t border-gray-100 absolute top-full left-0 w-full shadow-xl animate-in fade-in slide-in-from-top-4">
                 <div className="flex flex-col p-4 space-y-4 font-medium">
-                  <Link to="/" onClick={() => setIsMenuOpen(false)}>Home</Link>
-                  <Link to="/shop-pets" onClick={() => setIsMenuOpen(false)}>Shop Pets</Link>
-                  <Link to="/supplies" onClick={() => setIsMenuOpen(false)}>Supplies</Link>
-                  <Link to="/hiking" onClick={() => setIsMenuOpen(false)} className="text-green-700">Adventure Gear</Link>
-                  <Link to="/care" onClick={() => setIsMenuOpen(false)}>Pet Care Tips</Link>
-                  <Link to="/reviews" onClick={() => setIsMenuOpen(false)}>Customer Reviews</Link>
-                  <Link to="/about" onClick={() => setIsMenuOpen(false)}>About Us</Link>
-                  <Link to="/contact" onClick={() => setIsMenuOpen(false)}>Contact</Link>
+                  <Link to="/" onClick={() => setIsMenuOpen(false)} className={location.pathname === '/' ? 'text-orange-500' : ''}>Home</Link>
+                  <Link to="/shop-pets" onClick={() => setIsMenuOpen(false)} className={location.pathname === '/shop-pets' ? 'text-orange-500' : ''}>Shop Pets</Link>
+                  <Link to="/supplies" onClick={() => setIsMenuOpen(false)} className={location.pathname === '/supplies' ? 'text-orange-500' : ''}>Supplies</Link>
+                  <Link to="/hiking" onClick={() => setIsMenuOpen(false)} className={`${location.pathname === '/hiking' ? 'text-green-600' : 'text-green-700'}`}>Adventure Gear</Link>
+                  <Link to="/care" onClick={() => setIsMenuOpen(false)} className={location.pathname === '/care' ? 'text-orange-500' : ''}>Pet Care Tips</Link>
+                  <Link to="/reviews" onClick={() => setIsMenuOpen(false)} className={location.pathname === '/reviews' ? 'text-orange-500' : ''}>Customer Reviews</Link>
+                  <Link to="/about" onClick={() => setIsMenuOpen(false)} className={location.pathname === '/about' ? 'text-orange-500' : ''}>About Us</Link>
+                  <Link to="/contact" onClick={() => setIsMenuOpen(false)} className={location.pathname === '/contact' ? 'text-orange-500' : ''}>Contact</Link>
                 </div>
               </div>
             )}
@@ -261,8 +301,6 @@ const App: React.FC = () => {
             </a>
           </div>
         </div>
-      </HashRouter>
-    </CartContext.Provider>
   );
 };
 

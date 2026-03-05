@@ -2,7 +2,7 @@
 import { GoogleGenAI } from "@google/genai";
 
 export async function getPetAdvice(question: string): Promise<string> {
-  const apiKey = process.env.API_KEY;
+  const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
   if (!apiKey) return "AI service is currently unavailable.";
 
   try {

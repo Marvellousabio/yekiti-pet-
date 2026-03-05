@@ -39,7 +39,7 @@ export const PETS: Pet[] = [
     vaccinated: true,
     healthGuarantee: true,
     personality: ['Social', 'Vocal'],
-    images: ['https://images.unsplash.com/photo-1522850949506-5855141de465?auto=format&fit=crop&q=80&w=600']
+    images: ['https://images.unsplash.com/photo-1552728089-57bdde30beb3?auto=format&fit=crop&q=80&w=600']
   },
   {
     id: 'p4',
@@ -63,7 +63,7 @@ export const PRODUCTS: Product[] = [
     type: 'Food',
     price: 45.99,
     description: 'Grain-free high protein formula for growing pups.',
-    image: 'https://images.unsplash.com/photo-1589924691106-073b69789e88?auto=format&fit=crop&q=80&w=400',
+    image: 'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=format&fit=crop&q=80&w=400',
     rating: 4.8,
     stock: 25
   },
@@ -105,7 +105,7 @@ export const PRODUCTS: Product[] = [
     type: 'Hiking',
     price: 89.99,
     description: 'Cozy and protective outdoor shelter for camping.',
-    image: 'https://images.unsplash.com/photo-1591768793355-74d7c526978a?auto=format&fit=crop&q=80&w=400',
+    image: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&q=80&w=400',
     rating: 4.9,
     stock: 5,
     isHikingGear: true

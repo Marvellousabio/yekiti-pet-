@@ -1,12 +1,40 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yetkus Pet Store | Your One-Stop Pet Shop</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="description" content="Yetkus Pet Store - Your one-stop shop for healthy pets, premium supplies, and adventure gear. Free shipping on orders over $50!">
+    <meta name="keywords" content="pet store, dog supplies, cat food, pet accessories, hiking gear for pets, pet care tips">
+    <meta name="author" content="Yetkus Pet Store">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Yetkus Pet Store | Your One-Stop Pet Shop">
+    <meta property="og:description" content="Providing healthy, well-cared-for animals and premium products to keep them happy and adventurous.">
+    <meta property="og:image" content="/og-image.jpg">
+    <meta property="og:url" content="https://yetkuspet.com">
+    <meta property="og:site_name" content="Yetkus Pet Store">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Yetkus Pet Store | Your One-Stop Pet Shop">
+    <meta name="twitter:description" content="Providing healthy, well-cared-for animals and premium products to keep them happy and adventurous.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <title>Yetkus Pet Store | Your One-Stop Pet Shop</title>
+    
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -17,21 +45,59 @@
         .hiking-gradient {
             background: linear-gradient(135deg, #1a2e05 0%, #3f6212 100%);
         }
+        
+        /* Loading spinner while React loads */
+        body.loaded .app-loading {
+            display: none;
+        }
+        
+        .app-loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+        }
+        
+        .app-loading-spinner {
+            width: 48px;
+            height: 48px;
+            border: 4px solid #e5e7eb;
+            border-top-color: #f97316;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        .app-loading-text {
+            margin-top: 16px;
+            color: #6b7280;
+            font-size: 14px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
     </style>
-<script type="importmap">
-{
-  "imports": {
-    "react/": "https://esm.sh/react@^19.2.4/",
-    "react": "https://esm.sh/react@^19.2.4",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-    "@google/genai": "https://esm.sh/@google/genai@^1.40.0",
-    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
-    "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0"
-  }
-}
-</script>
 </head>
 <body class="bg-gray-50 text-gray-900">
-    <div id="root"></div>
+    <!-- Loading state shown before React hydrates -->
+    <div id="root">
+        <div class="app-loading">
+            <div class="app-loading-spinner"></div>
+            <p class="app-loading-text">Loading Yetkus Pet Store...</p>
+        </div>
+    </div>
+    
+    <script type="module" src="/index.tsx"></script>
+    
+    <!-- Fallback for no-JS users -->
+    <noscript>
+        <div style="padding: 40px; text-align: center; font-family: sans-serif;">
+            <h1>JavaScript Required</h1>
+            <p>Please enable JavaScript to view this website.</p>
+            <p>Yetkus Pet Store needs JavaScript to show you our amazing pet products!</p>
+        </div>
+    </noscript>
 </body>
 </html>

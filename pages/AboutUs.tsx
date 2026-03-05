@@ -70,18 +70,22 @@ const AboutUs: React.FC = () => {
           <p className="text-gray-500">The passionate team behind the smiles.</p>
         </div>
         <div className="grid md:grid-cols-3 gap-12">
-          {[1, 2, 3].map(i => (
+          {[
+            { name: 'James Wilson', role: 'Senior Pet Consultant', image: 'https://images.unsplash.com/photo-1599566150163-29194dcabd36?auto=format&fit=crop&q=80&w=400&h=500' },
+            { name: 'Emily Foster', role: 'Senior Pet Consultant', image: 'https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?auto=format&fit=crop&q=80&w=400&h=500' },
+            { name: 'Michael Brown', role: 'Senior Pet Consultant', image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=400&h=500' }
+          ].map((member, i) => (
             <div key={i} className="text-center space-y-4">
               <div className="relative group">
                 <img 
-                  src={`https://picsum.photos/id/${i + 60}/400/500`} 
-                  alt="Staff member" 
-                  className="rounded-3xl shadow-lg w-full h-80 object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                  src={member.image} 
+                  alt={member.name} 
+                  className="rounded-3xl shadow-lg w-full h-80 object-cover"
                 />
               </div>
               <div>
-                <h4 className="text-xl font-bold">Staff Member {i}</h4>
-                <p className="text-orange-500 font-medium">Senior Pet Consultant</p>
+                <h4 className="text-xl font-bold">{member.name}</h4>
+                <p className="text-orange-500 font-medium">{member.role}</p>
               </div>
             </div>
           ))}
